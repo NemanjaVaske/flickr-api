@@ -1,0 +1,5 @@
+<% unless @photos.nil? %>
+  <% @photos.each do |photo| %>
+    <img src="<%= Flickr.url_t(photo) %>"/>
+  <% end %>
+<% end %> 
