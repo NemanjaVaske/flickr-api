@@ -1,7 +1,11 @@
 class StaticPagesController < ApplicationController
     require 'flickr'
     def index
-        flickr = Flickr.new "e83cc62217638d457185edee98b56e82", "96f81df8398054b5"
-        @photos = flickr.photos.getRecent
+        flickr = Flickr.new 
+        if params[:flickr_id].blank?
+            @photos = flickr.photos.getRecent
+        else
+            @photos=flickr.photos.search(user_id: params[:flickr_id])
+        end
     end
 end
